@@ -1,0 +1,14 @@
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\obj\Debug\net9.0\LINQ-Dungeon-Simulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\obj\Debug\net9.0\LINQ-Dungeon-Simulator.AssemblyInfoInputs.cache
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\obj\Debug\net9.0\LINQ-Dungeon-Simulator.AssemblyInfo.cs
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\obj\Debug\net9.0\LINQ-Dungeon-Simulator.csproj.CoreCompileInputs.cache
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\bin\Debug\net9.0\LINQ-Dungeon-Simulator.exe
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\bin\Debug\net9.0\LINQ-Dungeon-Simulator.deps.json
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\bin\Debug\net9.0\LINQ-Dungeon-Simulator.runtimeconfig.json
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\bin\Debug\net9.0\LINQ-Dungeon-Simulator.dll
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\bin\Debug\net9.0\LINQ-Dungeon-Simulator.pdb
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\obj\Debug\net9.0\LINQ-Dungeon-Simulator.dll
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\obj\Debug\net9.0\refint\LINQ-Dungeon-Simulator.dll
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\obj\Debug\net9.0\LINQ-Dungeon-Simulator.pdb
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\obj\Debug\net9.0\LINQ-Dungeon-Simulator.genruntimeconfig.cache
+C:\Users\Ruth\Documents\C#\LINQ-Dungeon-Simulator\LINQ-Dungeon-Simulator\obj\Debug\net9.0\ref\LINQ-Dungeon-Simulator.dll

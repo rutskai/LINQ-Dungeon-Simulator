@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "LINQ-Dungeon-Simulator/1.0.0": {
+        "runtime": {
+          "LINQ-Dungeon-Simulator.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "LINQ-Dungeon-Simulator/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
