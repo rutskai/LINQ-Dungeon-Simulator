@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("LINQ-Dungeon-Simulator")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0bd06235d3dfb3cb7bba4173f97f98e98b812982")]
 [assembly: System.Reflection.AssemblyProductAttribute("LINQ-Dungeon-Simulator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("LINQ-Dungeon-Simulator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

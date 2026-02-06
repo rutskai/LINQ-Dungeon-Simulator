@@ -1,4 +1,5 @@
 using Functions;
+using Generators;
 
 namespace MenuHelpers
 {
@@ -6,12 +7,14 @@ namespace MenuHelpers
     {
         public static void Display()
         {
+            Console.WriteLine("Cuál es tu nombre?");
+            string name= Console.ReadLine() ?? "";
             int option =int.Parse(Console.ReadLine()!);
 
             switch (option)
             {
                 case 1:
-                Game.GenerateGame();
+                
                 break;
                 case 2:
                 break;
