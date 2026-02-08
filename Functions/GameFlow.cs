@@ -8,39 +8,25 @@ namespace Functions
 {
     public class GameFlow
     {
-        private Game game;
-        private Player player;
+        private Game? game;
+        private Player? player;
 
-        private Room room;
-        private bool isRunning;
+        private Room? room;
 
-        public GameFlow()
+
+        public void MainGameLoop(string playerName)
         {
-            isRunning = false;
-        }
-
-        public void Start()
-        {
-            Console.Clear();
-            WelcomeScreen.Display();
-            string playerName = Input.GetPlayerName();
             
             Console.Clear();
             game = GameGenerator.GenerateGame(playerName, 10);
             player=game.Player;
             room=game.GetCurrentRoom();
-            isRunning = true;
 
-            MainGameLoop();
-        }
-
-        private void MainGameLoop()
-        {
             while (!game.IsGameOver)
             {
                 Console.Clear();
                 ShowStatsGame.Display(player,game, room);
-                DisplayCurrentRoom();
+                CurrentRoom.Display(game);
                 RoomAction.ProcessRoomActions(game,player);
 
                 if (!game.IsGameOver && game.IsLastRoom())
@@ -57,68 +43,7 @@ namespace Functions
            EndGame.DisplayGameEnd(player);
         }
 
-        
-
-        private void DisplayCurrentRoom()
-        {
-            var room = game.GetCurrentRoom();
-            if (room == null) return;
-
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine($"\n🚪 ROOM {room.Id}: {room.Event}");
-            Console.ForegroundColor = ConsoleColor.Yellow;
-            Console.WriteLine("─────────────────────────────────────────────────────────────\n");
-            Console.ResetColor();
-
-            // Mostrar enemigos
-            if (room.Enemies.Count > 0)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("⚔️  ENEMIES:");
-                Console.ResetColor();
-                foreach (var enemy in room.Enemies)
-                {
-                    Console.Write($"   • {enemy.Name} ");
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
-                    Console.WriteLine($"[HP: {enemy.Health} | ATK: {enemy.Attack}]");
-                    Console.ResetColor();
-                }
-            }
-
-            // Mostrar items
-            if (room.Items.Count > 0)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("\n💎 ITEMS:");
-                Console.ResetColor();
-                foreach (var item in room.Items)
-                {
-                    Console.ForegroundColor = GetRarityColor(item.Rarity);
-                    Console.WriteLine($"   • {item.Name} ({item.Type}) - {item.Rarity}");
-                    Console.ResetColor();
-                }
-            }
-
-            if (room.Enemies.Count == 0 && room.Items.Count == 0)
-            {
-                Console.ForegroundColor = ConsoleColor.DarkGray;
-                Console.WriteLine("   (Empty room)");
-                Console.ResetColor();
-            }
-
-            Console.WriteLine();
-        }
-
-        private ConsoleColor GetRarityColor(string rarity)
-        {
-            return rarity switch
-            {
-                "Común" => ConsoleColor.White,
-                "Raro" => ConsoleColor.Cyan,
-                "Épico" => ConsoleColor.Magenta,
-                _ => ConsoleColor.White
-            };
-        }
+    
 
         private void HandleBossRoom()
         {
@@ -181,7 +106,7 @@ namespace Functions
         private void PromptContinue()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("\n➤ Press any key to continue to the next room...");
+            Console.Write("\n➤ Presiona cualquier tecla apara continuar a la siguiente habitación...");
             Console.ResetColor();
             Console.ReadKey();
             game.MoveToNextRoom();
