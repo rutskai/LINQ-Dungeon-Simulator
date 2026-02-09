@@ -4,7 +4,7 @@ public class Program
 {
   public static void Main()
     {
-      ShowMainMenu.Display();
+      WelcomeScreen.Display();
       ShowOptions.Display();       
     }
 }
