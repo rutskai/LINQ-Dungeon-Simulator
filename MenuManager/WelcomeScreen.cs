@@ -8,7 +8,7 @@ namespace MenuManager
             Console.WriteLine("\n");
             Console.WriteLine("╔════════════════════════════════════════════════════════════╗");
             Console.WriteLine("║                                                            ║");
-            Console.WriteLine("║      ⚔️  Bienvenido a la mazmorra CRAWLER ⚔️              ║");
+            Console.WriteLine("║      ⚔️  Bienvenido a la mazmorra CRAWLER ⚔️                 ║");
             Console.WriteLine("║                                                            ║");
             Console.WriteLine("║  Explora las profundidades, derrota enemigos, sobrevive!   ║");
             Console.WriteLine("║                                                            ║");

@@ -1,5 +1,6 @@
 using Functions;
 using Generators;
+using MenuManager;
 
 namespace MenuHelpers
 {
@@ -7,13 +8,15 @@ namespace MenuHelpers
     {
         public static void Display()
         {
-            Console.WriteLine("Cuál es tu nombre?");
-            string name= Console.ReadLine() ?? "";
-            int option =int.Parse(Console.ReadLine()!);
+            string name= Input.GetPlayerName();
+            ShowMainMenu.Display();
+            int option =InputOption.GetPlayerOption(name);
 
             switch (option)
             {
                 case 1:
+                var GameFlow= new GameFlow();
+                GameFlow.MainGameLoop(name);
                 
                 break;
                 case 2:

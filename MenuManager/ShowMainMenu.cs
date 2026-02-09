@@ -6,17 +6,8 @@ namespace MenuManager{
     {
         public static void Display()
         {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Cyan;
-
-          
-            Console.WriteLine("╔═══════════════════════════════════════════════════════╗");
-            Console.WriteLine("║                                                       ║");
-            Console.WriteLine("║                ⚔️  DUNGEON ADVENTURE ⚔️                 ║");
-            Console.WriteLine("║                                                       ║");
-            Console.WriteLine("╚═══════════════════════════════════════════════════════╝");
+       
             Console.WriteLine();
-
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("═════════════════════════════════════════════════════════");
             Console.WriteLine();
@@ -31,12 +22,7 @@ namespace MenuManager{
             Console.WriteLine();
             Console.ForegroundColor = ConsoleColor.Yellow;
             Console.WriteLine("═════════════════════════════════════════════════════════");
-            Console.WriteLine();
 
-            Console.ForegroundColor = ConsoleColor.White;
-            Console.Write("   Selecciona una opción: ");
-            Console.ForegroundColor = ConsoleColor.Green;
-        }
-    
+          }
     }
 }
