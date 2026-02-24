@@ -171,3 +171,8 @@ Aparece cada **2 habitaciones**. Ofrece 4 artículos aleatorios del catálogo:
 | `Confirmation` | Validación recursiva de respuestas `s/n` |
 | `Continue` | Pausa entre habitaciones |
 
+---
+
+## Autora
+Ruth Collado García
+
