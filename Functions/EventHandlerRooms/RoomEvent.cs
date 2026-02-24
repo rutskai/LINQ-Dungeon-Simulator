@@ -1,60 +1,64 @@
 using Models;
+using Utils;
+
 namespace Functions
 {
+    /**
+    * Clase que maneja los eventos especiales dentro de una habitación.
+    * Cada evento afecta al jugador de manera diferente, como curación,
+    * aumento de daño, daño por trampas, puzzles o emboscadas.
+    */
     public static class RoomEventHandler
     {
-        public static void HandleRoomEvent(Room room,Player player)
+
+    /**
+     * Procesa el evento de la habitación actual y aplica sus efectos al jugador.
+     * - Healing Fountain: cura 15 puntos de vida.
+     * - Merchant: aumenta el daño base del jugador en 2.
+     * - Trap: inflige 10 de daño al jugador.
+     * - Puzzle: cura 15 puntos de vida.
+     * - Ambush: notifica emboscada sin daño.
+     * - Boss Fight: notifica encuentro con el jefe.
+     *
+     * @param room   Instancia de la habitación actual con el evento.
+     * @param player Instancia del jugador que recibe el efecto del evento.
+     */
+        public static void HandleRoomEvent(Room room, Player player)
         {
             switch (room.Event)
             {
                 case "Healing Fountain":
-                    Console.ForegroundColor = ConsoleColor.Cyan;
-                    Console.WriteLine("Encontraste una fuente de vida!! Recuperas 30 de vida.");
-                    Console.ResetColor();
-                    player.Health = Math.Min(100, player.Health + 30);
+                    Typewriter.WriteLine("Encontraste una fuente de vida!! Recuperas 15 de vida.", ConsoleColor.Cyan, Typewriter.Speed.Slow);
+                    
+                    player.Health = Math.Min(100, player.Health + 15);
                     break;
 
                 case "Merchant":
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("Un misterioso mercader aparece...");
-                    Console.WriteLine("   'Puedo aumentar tu daño por 2!'");
-                    Console.ResetColor();
+                    Typewriter.WriteLine("Un misterioso mercader aparece...", ConsoleColor.Yellow, Typewriter.Speed.Slow);
+                    Typewriter.WriteLine("   'Puedo aumentar tu daño por 2!'", ConsoleColor.Yellow, Typewriter.Speed.Normal, 500);
                     player.BaseDamage += 2;
                     break;
 
                 case "Trap":
-                    Console.ForegroundColor = ConsoleColor.Red;
-                   Console.WriteLine("Activaste una trampa. Recibes 10 de daño.");
-                    Console.ResetColor();
+                    Typewriter.WriteLine("Activaste una trampa. Recibes 10 de daño.", ConsoleColor.Red, Typewriter.Speed.Slow, 500);
                     player.Health -= 10;
                     break;
 
-                case "Treasure Room":
-                    Console.ForegroundColor = ConsoleColor.Green;
-                   Console.WriteLine("Esta es una sala de tesoros legendaria! Hay artículos geniales aquí!");
-                    Console.ResetColor();
-                    break;
-
                 case "Puzzle":
-                    Console.ForegroundColor = ConsoleColor.Magenta;
-                    Console.WriteLine("🧩 Resolviste un puzzle ancestral! +15 de vida.");
-                    Console.ResetColor();
+                    Typewriter.WriteLine("Resolviste un puzzle ancestral! +15 de vida.", ConsoleColor.Magenta, Typewriter.Speed.Slow, 500);
                     player.Health = Math.Min(100, player.Health + 15);
                     break;
 
                 case "Ambush":
-                    Console.ForegroundColor = ConsoleColor.Red;
-                   Console.WriteLine("Una emboscada! Pero lograste escapar...");
-                    Console.ResetColor();
+                    Typewriter.WriteLine("Una emboscada! Pero lograste escapar...", ConsoleColor.Red, Typewriter.Speed.Slow, 500);
                     break;
 
                 case "Boss Fight":
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("HABITACIÓN DEL BOSS DETECTEDA!");
-                    Console.ResetColor();
+                    Typewriter.WriteLine("HABITACIÓN DEL BOSS DETECTEDA!", ConsoleColor.Red, Typewriter.Speed.Slow, 500);
                     break;
             }
-            Console.WriteLine();
+
+            Typewriter.Pause(300);
         }
     }
 }

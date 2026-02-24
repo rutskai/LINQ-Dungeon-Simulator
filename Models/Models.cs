@@ -1,5 +1,14 @@
+/**
+ * Contiene las entidades principales del modelo del juego.
+ * Define las clases que representan al jugador, enemigos,
+ * objetos y habitaciones, así como sus atributos básicos
+ * y constructores de inicialización.
+ */
+
 namespace Models
 {
+
+
     public class Player
     {
         public string Name { get; set; }
@@ -8,7 +17,9 @@ namespace Models
         public List<Item> Inventory { get; set; }
         public int TotalDamageDealt { get; set; }
         public List<Enemy> DefeatedEnemies { get; set; }
+        public int Gold { get; set; }
 
+   
         public Player()
         {
             Name = "Hero";
@@ -17,8 +28,10 @@ namespace Models
             Inventory = new List<Item>();
             TotalDamageDealt = 0;
             DefeatedEnemies = new List<Enemy>();
+            Gold = 0;
         }
 
+      
         public Player(string name, int health, int baseDamage)
         {
             Name = name;
@@ -27,6 +40,7 @@ namespace Models
             Inventory = new List<Item>();
             TotalDamageDealt = 0;
             DefeatedEnemies = new List<Enemy>();
+            Gold = 0;
         }
     }
 
@@ -36,23 +50,24 @@ namespace Models
         public int Health { get; set; }
         public int Attack { get; set; }
         public string Type { get; set; }
+        public int GoldReward { get; set; }
 
-        // Constructor por defecto
         public Enemy()
         {
             Name = "Goblin";
             Health = 20;
             Attack = 5;
             Type = "Goblin";
+            GoldReward = 10;
         }
 
-        // Constructor personalizado
-        public Enemy(string name, int health, int attack, string type)
+        public Enemy(string name, int health, int attack, string type, int goldReward = 10)
         {
             Name = name;
             Health = health;
             Attack = attack;
             Type = type;
+            GoldReward = goldReward;
         }
     }
 

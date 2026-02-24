@@ -1,119 +1,110 @@
 using Models;
-using Data;
 using Generators;
 using MenuManager;
+using Utils;
+using Funcions;
+using Save;
 
 
 namespace Functions
 {
+
+    /**
+    * Clase que gestiona el flujo principal del juego.
+    * Controla el ciclo de la partida, incluyendo nueva partida,
+    * carga de partidas guardadas, interacción con habitaciones,
+    * combate con jefes, tiendas y guardado automático.
+    */
     public class GameFlow
     {
-        private Game? game;
-        private Player? player;
+        private static Game? game;
+        private static Player? player;
+        private static Room? room;
 
-        private Room? room;
-
-
-        public void MainGameLoop(string playerName)
+    /**
+     * Inicia una nueva partida con un jugador de nombre especificado.
+     * Genera el juego y la mazmorra y ejecuta el bucle principal.
+     *
+     * @param playerName Nombre del jugador que iniciará la partida.
+     */
+        public static void MainGameLoop(string playerName)
         {
-            
-            Console.Clear();
             game = GameGenerator.GenerateGame(playerName, 10);
-            player=game.Player;
-            room=game.GetCurrentRoom();
+            player = game.Player;
+            room = game.GetCurrentRoom();
 
-            while (!game.IsGameOver)
+            RunLoop();
+        }
+        /**
+        * Carga una partida existente desde el archivo de guardado.
+        * Reconstruye el jugador y la posición en la mazmorra,
+        * luego ejecuta el bucle principal del juego.
+        */
+        public static void LoadGameLoop()
+        {
+            Console.Clear();
+            var result = SaveManager.Load();
+            if (result == null) return;
+
+            var (loadedPlayer, roomIndex) = result.Value;
+            game = GameGenerator.GenerateGame(loadedPlayer.Name, 10);
+            game.Player = loadedPlayer;
+            game.CurrentRoomIndex = roomIndex;
+            player = game.Player;
+            room = game.GetCurrentRoom();
+
+            RunLoop();
+        }
+
+    /**
+     * Ejecuta el bucle principal de la partida.
+     * Controla:
+     * - Visualización de estadísticas y habitación actual.
+     * - Procesamiento de acciones en la habitación.
+     * - Manejo de la habitación del jefe.
+     * - Tiendas cada dos habitaciones.
+     * - Guardado automático entre habitaciones.
+     * - Finalización del juego.
+     */
+
+        public static void RunLoop()
+        {
+            while (!game!.IsGameOver)
             {
                 Console.Clear();
-                ShowStatsGame.Display(player,game, room);
+                ShowStatsGame.Display(player!, game, room!);
+                Typewriter.Pause(2000);
                 CurrentRoom.Display(game);
-                RoomAction.ProcessRoomActions(game,player);
+                RoomAction.ProcessRoomActions(game, player!);
 
                 if (!game.IsGameOver && game.IsLastRoom())
                 {
-                    HandleBossRoom();
+                    Boss.HandleBossRoom(game);
+                }
+
+                bool isShopRoom = !game.IsGameOver
+                    && !game.IsLastRoom()
+                    && new[] { game.GetCurrentRoom()?.Id }
+                        .Where(id => id.HasValue)
+                        .Any(id => id!.Value % 2 == 0);
+
+                if (isShopRoom)
+                {
+                    if (Confirmation.AskConfirmation("\n🏪 ¡Hay una tienda cerca! ¿Entrar? (s/n): "))
+                    {
+                        Shop.OpenShop(player!);
+                    }
+                        
                 }
 
                 if (!game.IsGameOver && game.RoomsRemaining() > 0)
                 {
-                    PromptContinue();
+                    Typewriter.FlushInput();
+                    SaveManager.Save(player!, game);
+                    Continue.PromptContinue(game);
                 }
             }
-
-           EndGame.DisplayGameEnd(player);
+            GameEnd.DisplayGameEnd(player!);
         }
-
-    
-
-        private void HandleBossRoom()
-        {
-            Console.Clear();
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("\n");
-            Console.WriteLine("╔════════════════════════════════════════════════════════════╗");
-            Console.WriteLine("║                                                            ║");
-            Console.WriteLine("║                    ⚡ FINAL BOSS APPEARS ⚡                 ║");
-            Console.WriteLine("║                                                            ║");
-            Console.WriteLine("║                   The ancient guardian awakens...          ║");
-            Console.WriteLine("║                                                            ║");
-            Console.WriteLine("╚════════════════════════════════════════════════════════════╝");
-            Console.ResetColor();
-
-            var boss = new Enemy("Ancient Guardian", 80, 12, "Boss");
-            Console.WriteLine();
-
-            while (boss.Health > 0 && game.Player.Health > 0)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.Write($"➤ Attack the boss! ");
-                Console.ResetColor();
-                Console.ReadLine();
-
-                int playerDamage = game.Player.BaseDamage + GameData.random.Next(-1, 4);
-                boss.Health -= playerDamage;
-
-                Console.ForegroundColor = ConsoleColor.Yellow;
-                Console.WriteLine($"You deal {playerDamage} damage! Boss HP: {Math.Max(0, boss.Health)}");
-                Console.ResetColor();
-
-                if (boss.Health <= 0) break;
-
-                int bossDamage = boss.Attack + GameData.random.Next(0, 3);
-                game.Player.Health -= bossDamage;
-
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine($"The boss strikes back for {bossDamage} damage! Your HP: {Math.Max(0, game.Player.Health)}");
-                Console.ResetColor();
-
-                if (game.Player.Health <= 0)
-                {
-                    game.IsGameOver = true;
-                    break;
-                }
-
-                System.Threading.Thread.Sleep(1000);
-            }
-
-            if (boss.Health <= 0)
-            {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine("\n✓ YOU DEFEATED THE BOSS! YOU WON THE GAME!\n");
-                Console.ResetColor();
-                game.IsGameOver = true;
-            }
-        }
-
-        private void PromptContinue()
-        {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.Write("\n➤ Presiona cualquier tecla apara continuar a la siguiente habitación...");
-            Console.ResetColor();
-            Console.ReadKey();
-            game.MoveToNextRoom();
-        }
-
-        
-
-       
     }
 }
