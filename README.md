@@ -1,19 +1,20 @@
 # Dungeon Crawler
 
-> Juego de mazmorras por consola desarrollado en **C#**. Explora habitaciones generadas proceduralmente, combate enemigos, visita tiendas, enfrenta un jefe final y guarda tu progreso entre sesiones.
+> Juego de mazmorras por consola desarrollado en **C#** y hecho con **LINQ**. Explora habitaciones generadas proceduralmente, combate enemigos, visita tiendas, enfrenta un jefe final y guarda tu progreso entre sesiones.
 
 ---
 
-##  Tabla de Contenido
+## Tabla de Contenido
 
-- [Características](#características)
-- [Requisitos](#requisitos)
-- [Estructura del Proyecto](#estructura-del-proyecto)
-- [Arquitectura](#arquitectura)
-- [Flujo del Juego](#flujo-del-juego)
-- [Mecánicas](#mecánicas)
-- [Sistema de Guardado](#sistema-de-guardado)
-- [Utilidades](#utilidades)
+- Características
+- Cómo iniciar el proyecto
+- Requisitos
+- Estructura del Proyecto
+- Arquitectura
+- Flujo del Juego
+- Mecánicas
+- Sistema de Guardado
+- Utilidades
 
 ---
 
@@ -37,6 +38,18 @@
 
 ---
 
+## Cómo iniciar el proyecto
+
+1. Clona o descarga el repositorio
+2. Abre una terminal en la carpeta raíz del proyecto
+Ejecuta:
+```
+dotnet run
+```
+
+
+---
+
 ## 📁 Estructura del Proyecto
 
 ```
@@ -53,7 +66,7 @@ DungeonCrawler/
 
 ---
 
-##  Arquitectura
+## Arquitectura
 
 ### Models
 | Clase | Propiedades destacadas |
@@ -107,7 +120,7 @@ WelcomeScreen → Menú Principal → Nueva Partida / Cargar Partida
 
 ---
 
-##  Mecánicas
+## Mecánicas
 
 ### Combate
 - Turnos alternados jugador ↔ enemigo
@@ -148,7 +161,7 @@ Aparece cada **2 habitaciones**. Ofrece 4 artículos aleatorios del catálogo:
 
 ---
 
-##  Utilidades
+## Utilidades
 
 | Clase | Función |
 |-------|---------|
@@ -157,3 +170,4 @@ Aparece cada **2 habitaciones**. Ofrece 4 artículos aleatorios del catálogo:
 | `InputOption` | Lectura recursiva de opciones numéricas con validación |
 | `Confirmation` | Validación recursiva de respuestas `s/n` |
 | `Continue` | Pausa entre habitaciones |
+
