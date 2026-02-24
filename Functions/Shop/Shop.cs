@@ -160,7 +160,7 @@ namespace Functions
                     int oldHp = player.Health;
                     player.Health = Math.Min(100, player.Health + healing);
                     Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine($"  ❤️  HP restaurado: {oldHp} → {player.Health}");
+                    Console.WriteLine($"  ❤️  Vida restaurada: {oldHp} → {player.Health}");
                     Console.ResetColor();
                     break;
 
