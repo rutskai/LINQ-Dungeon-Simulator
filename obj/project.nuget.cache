@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "V0QWG0G2RC4=",
+  "dgSpecHash": "SL51FJH/x4A=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Ruth\\Documents\\C#\\LINQ-Dungeon-Simulator\\LINQ-Dungeon-Simulator\\LINQ-Dungeon-Simulator.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\Ruth3\\OneDrive\\Documentos\\GitHub\\LINQ-Dungeon-Simulator\\LINQ-Dungeon-Simulator.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Ruth3\\.nuget\\packages\\microsoft.netcore.app.ref\\9.0.11\\microsoft.netcore.app.ref.9.0.11.nupkg.sha512",
+    "C:\\Users\\Ruth3\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\9.0.11\\microsoft.windowsdesktop.app.ref.9.0.11.nupkg.sha512",
+    "C:\\Users\\Ruth3\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\9.0.11\\microsoft.aspnetcore.app.ref.9.0.11.nupkg.sha512",
+    "C:\\Users\\Ruth3\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\9.0.11\\microsoft.netcore.app.host.win-x64.9.0.11.nupkg.sha512"
+  ],
   "logs": []
 }
