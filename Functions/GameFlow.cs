@@ -75,7 +75,13 @@ namespace Functions
                 ShowStatsGame.Display(player!, game, room!);
                 Typewriter.Pause(2000);
                 CurrentRoom.Display(game);
-                RoomAction.ProcessRoomActions(game, player!);
+              
+
+                 if (!game.IsLastRoom())
+                {
+                     RoomAction.ProcessRoomActions(game, player!);
+                }                            
+           
 
                 if (!game.IsGameOver && game.IsLastRoom())
                 {
@@ -104,6 +110,8 @@ namespace Functions
                     Continue.PromptContinue(game);
                 }
             }
+
+
             GameEnd.DisplayGameEnd(player!);
         }
     }
