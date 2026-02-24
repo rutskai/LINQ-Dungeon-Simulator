@@ -78,7 +78,7 @@ namespace MenuHelpers
                         break;
 
                     case 4:
-                        Typewriter.WriteLine("Saliendo...", ConsoleColor.Blue, Typewriter.Speed.Fast, 400);
+                        Typewriter.WriteLine("Saliendo...", ConsoleColor.Red, Typewriter.Speed.Fast, 400);
                         return;
 
                     default:
